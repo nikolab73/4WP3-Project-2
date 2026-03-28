@@ -42,7 +42,7 @@ async function start() {
         req.json({status : 'Updated item with ID=${req.params.id}'});
     });
 
-    app.delete('/api/:id' async (req, res) => {
+    app.delete('/api/:id', async (req, res) => {
         await db.run('DELETE FROM trips WHERE id=?', [id]);
         req.json({status : 'Deleted item with ID=${req.params.id}'});
     });
