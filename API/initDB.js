@@ -25,3 +25,5 @@ async function makeConnection() {
         driver: sqlite3.Database
     });
 }
+
+module.exports = {initializeDatabase, makeConnection};
