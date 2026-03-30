@@ -79,7 +79,7 @@ export default function App() {
       setModalVisible(true);
     };
 
-    const openEditModal = () => {
+    const openEditModal = async (id) => {
       const trip = await fetch(`${apiURL}/${id}`).then(r => r.json());
       setRouteName(trip.routeName);
       setDifficulty(String(trip.difficulty));
@@ -87,6 +87,18 @@ export default function App() {
       setDescription(trip.description);
       setEditingId(id);
       setModalVisible(true);
+    };
+
+    const saveTrip = async () => {
+      if(editingId) { //if editing a trip vs creating new
+        await fetch(`${apiURL}/${editingId}`, {
+          method: 'PUT',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({routeName, difficulty, distance, description})
+        });
+      } else {
+        
+      }
     }
 
 
