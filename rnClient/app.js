@@ -80,3 +80,16 @@ export default function App() {
           </View>
         );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f0f4f8',
+    padding: 20,
+    paddingTop: 50
+  },
+  title: {
+    
+  }
+
+});
