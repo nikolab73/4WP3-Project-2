@@ -123,6 +123,14 @@ export default function App() {
               </View>
             )}
           />
+
+          <View>
+            // bottom buttons
+          </View>
+
+          <Modal>
+            // edit and add popups
+          </Modal>
         </View>
       );
 }
@@ -176,6 +184,32 @@ const styles = StyleSheet.create({
   actionCell: {
     flex: 1,
     gap: 4
+  },
+  bottomButtons: {
+    flexDirection: 'row',
+    marginTop: 16,
+    gap: 8
+  },
+  inputs: {
+    borderWidth: 1,
+    borderColor: '#cccccc',
+    backgroundColor: '#f0f4f8',
+    padding: 10,
+    marginBottom: 10,
+    borderRadius: 8,
+    fontSize: 15
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center'
+},
+  modalBox: {
+    backgroundColor: '#fff',
+    padding: 24,
+    borderRadius: 12,
+    width: '85%'
   }
 
 });
