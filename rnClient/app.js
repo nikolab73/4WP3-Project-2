@@ -33,15 +33,6 @@ export default function App() {
         setTrips(data);
     };
 
-    const addTrip = async () => {
-        await fetch(apiURL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ routeName, difficulty, distance, description })
-        });
-        fetchTrips();
-    };
-
     const deleteTrips = async () => {
         await fetch(apiURL, { method: 'DELETE' });
         fetchTrips();
@@ -50,15 +41,6 @@ export default function App() {
     const fetchTrip = async (id) => {
         const response = await fetch(`${apiURL}/${id}`);
         return await response.json();
-    };
-
-    const updateTrip = async (id) => {
-        await fetch(`${apiURL}/${id}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ routeName, difficulty, distance, description })
-        });
-        fetchTrips();
     };
 
     const deleteTrip = async (id) => {
