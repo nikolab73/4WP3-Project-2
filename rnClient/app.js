@@ -99,14 +99,14 @@ export default function App() {
       } else {
         await fetch(apiURL, {
           method: 'POST',
-          header: {'Content-Type': 'application/json'},
+          headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({routeName, difficulty, distance, description})
         });
       }
-
-      
-    }
-
+      setModalVisible(false);
+      clearForm();
+      fetchTrips();
+    };
 
     return (
         <View style={styles.container}>
@@ -153,11 +153,28 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginBottom: 4
   },
-  headerCell {
+  headerCell: {
     flex: 1,
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 13
+  },
+  tableRow: {
+    flexDirection: 'row',
+    backgroundColor: '#ffffff',
+    padding: 10,
+    borderRadius: 4,
+    marginBottom: 4,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#d4d4d4'
+  },
+  cell: {
+    flex: 1,
+  },
+  actionCell: {
+    flex: 1,
+    gap: 4
   }
 
 });
