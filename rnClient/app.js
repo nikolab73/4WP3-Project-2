@@ -90,15 +90,21 @@ export default function App() {
     };
 
     const saveTrip = async () => {
-      if(editingId) { //if editing a trip vs creating new
+      if(editingId) { //if editing a trip vs creating new (else)
         await fetch(`${apiURL}/${editingId}`, {
           method: 'PUT',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({routeName, difficulty, distance, description})
         });
       } else {
-        
+        await fetch(apiURL, {
+          method: 'POST',
+          header: {'Content-Type': 'application/json'},
+          body: JSON.stringify({routeName, difficulty, distance, description})
+        });
       }
+
+      
     }
 
 
