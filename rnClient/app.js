@@ -71,24 +71,32 @@ export default function App() {
       setModalVisible(true);
     };
 
-    const saveTrip = async () => {
-      if(editingId) { //if editing a trip vs creating new (else)
-        await fetch(`${apiURL}/${editingId}`, {
-          method: 'PUT',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({routeName, difficulty, distance, description})
-        });
-      } else {
-        await fetch(apiURL, {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({routeName, difficulty, distance, description})
-        });
-      }
-      setModalVisible(false);
-      clearForm();
-      fetchTrips();
-    };
+const saveTrip = async () => {
+    try {
+        if (editingId) {
+            const response = await fetch(`${apiURL}/${editingId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ routeName, difficulty, distance, description })
+            });
+            const data = await response.json();
+            console.log('PUT response:', data);
+        } else {
+            const response = await fetch(apiURL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ routeName, difficulty, distance, description })
+            });
+            const data = await response.json();
+            console.log('POST response:', data);
+        }
+        setModalVisible(false);
+        clearForm();
+        fetchTrips();
+    } catch (error) {
+        console.log('Error saving trip:', error);
+    }
+};
 
     return (
         <View style={styles.container}>
@@ -132,7 +140,58 @@ export default function App() {
                 <Text style={styles.buttonText}>Clear All</Text>
             </TouchableOpacity>
           </View>
-// modals
+            <Modal visible={modalVisible} animationType="slide" transparent={true}>
+    <View style={styles.modalOverlay}>
+        <View style={styles.modalBox}>
+
+            <Text style={styles.title}>
+                {editingId ? 'Edit Trip' : 'Add Trip'}
+            </Text>
+
+            <TextInput
+                style={styles.inputs}
+                placeholder="Route Name"
+                value={routeName}
+                onChangeText={setRouteName}
+            />
+            <TextInput
+                style={styles.inputs}
+                placeholder="Difficulty (1-5)"
+                value={difficulty}
+                onChangeText={setDifficulty}
+                keyboardType="numeric"
+            />
+            <TextInput
+                style={styles.inputs}
+                placeholder="Distance (km)"
+                value={distance}
+                onChangeText={setDistance}
+                keyboardType="numeric"
+            />
+            <TextInput
+                style={styles.inputs}
+                placeholder="Description"
+                value={description}
+                onChangeText={setDescription}
+            />
+
+            <View style={styles.bottomButtons}>
+                <TouchableOpacity style={styles.addButton} onPress={saveTrip}>
+                    <Text style={styles.buttonText}>
+                        {editingId ? 'Save' : 'Add'}
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={[styles.addButton, {backgroundColor: '#c0392b'}]} onPress={() => {
+                    setModalVisible(false);
+                    clearForm();
+                }}>
+                    <Text style={styles.buttonText}>Cancel</Text>
+                </TouchableOpacity>
+            </View>
+
+        </View>
+    </View>
+</Modal>
         </View>
       );
 }
