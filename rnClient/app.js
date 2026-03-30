@@ -74,7 +74,7 @@ export default function App() {
             <View style={styles.tableHeader}>
                 <Text style={[styles.headerCell, { flex: 2 }]}>Route</Text>
                 <Text style={styles.headerCell}>Difficulty</Text>
-                <Text style={styles.headerCell}>Dist.</Text>
+                <Text style={styles.headerCell}>Distance</Text>
                 <Text style={styles.headerCell}>Actions</Text>
             </View>
           </View>
@@ -89,7 +89,30 @@ const styles = StyleSheet.create({
     paddingTop: 50
   },
   title: {
-    
+    fontSize: 28,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#1a3c5e',
+    marginBottom: 4,
+  },
+  subtitle: {
+    fontSize: 16,
+    textAlign: 'center',
+    color: '#555',
+    marginBottom: 16,
+  },
+  tableHeader: {
+    flexDirection: 'row',
+    backgroundColor: '#185f33',
+    padding: 10,
+    borderRadius: 4,
+    marginBottom: 4
+  },
+  headerCell {
+    flex: 1,
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 13
   }
 
 });
