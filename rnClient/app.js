@@ -141,57 +141,57 @@ const saveTrip = async () => {
             </TouchableOpacity>
           </View>
             <Modal visible={modalVisible} animationType="slide" transparent={true}>
-    <View style={styles.modalOverlay}>
-        <View style={styles.modalBox}>
+              <View style={styles.modalOverlay}>
+                  <View style={styles.modalBox}>
 
-            <Text style={styles.title}>
-                {editingId ? 'Edit Trip' : 'Add Trip'}
-            </Text>
+                      <Text style={styles.title}>
+                          {editingId ? 'Edit Trip' : 'Add Trip'}
+                      </Text>
 
-            <TextInput
-                style={styles.inputs}
-                placeholder="Route Name"
-                value={routeName}
-                onChangeText={setRouteName}
-            />
-            <TextInput
-                style={styles.inputs}
-                placeholder="Difficulty (1-5)"
-                value={difficulty}
-                onChangeText={setDifficulty}
-                keyboardType="numeric"
-            />
-            <TextInput
-                style={styles.inputs}
-                placeholder="Distance (km)"
-                value={distance}
-                onChangeText={setDistance}
-                keyboardType="numeric"
-            />
-            <TextInput
-                style={styles.inputs}
-                placeholder="Description"
-                value={description}
-                onChangeText={setDescription}
-            />
+                      <TextInput
+                          style={styles.inputs}
+                          placeholder="Route Name"
+                          value={routeName}
+                          onChangeText={setRouteName}
+                      />
+                      <TextInput
+                          style={styles.inputs}
+                          placeholder="Difficulty (1-5)"
+                          value={difficulty}
+                          onChangeText={setDifficulty}
+                          keyboardType="numeric"
+                      />
+                      <TextInput
+                          style={styles.inputs}
+                          placeholder="Distance (km)"
+                          value={distance}
+                          onChangeText={setDistance}
+                          keyboardType="numeric"
+                      />
+                      <TextInput
+                          style={styles.inputs}
+                          placeholder="Description"
+                          value={description}
+                          onChangeText={setDescription}
+                      />
 
-            <View style={styles.bottomButtons}>
-                <TouchableOpacity style={styles.addButton} onPress={saveTrip}>
-                    <Text style={styles.buttonText}>
-                        {editingId ? 'Save' : 'Add'}
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={[styles.addButton, {backgroundColor: '#c0392b'}]} onPress={() => {
-                    setModalVisible(false);
-                    clearForm();
-                }}>
-                    <Text style={styles.buttonText}>Cancel</Text>
-                </TouchableOpacity>
-            </View>
+                      <View style={styles.bottomButtons}>
+                          <TouchableOpacity style={styles.addButton} onPress={saveTrip}>
+                              <Text style={styles.buttonText}>
+                                  {editingId ? 'Save' : 'Add'}
+                              </Text>
+                          </TouchableOpacity>
+                          <TouchableOpacity style={[styles.addButton, {backgroundColor: '#c0392b'}]} onPress={() => {
+                              setModalVisible(false);
+                              clearForm();
+                          }}>
+                              <Text style={styles.buttonText}>Cancel</Text>
+                          </TouchableOpacity>
+                      </View>
 
-        </View>
-    </View>
-</Modal>
+                  </View>
+              </View>
+          </Modal>
         </View>
       );
 }
