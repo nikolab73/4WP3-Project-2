@@ -117,18 +117,21 @@ const saveTrip = async () => {
             keyExtractor={(item) => item.id.toString()}
             renderItem={({item}) => (
               <View style={styles.tableRow}>
-                <Text style={[styles.cell, { flex: 2 }]}>{item.routeName}</Text>
-                <Text style={styles.cell}>{item.difficulty}</Text>
-                <Text style={styles.cell}>{item.distance}</Text>
-                <View style={styles.actionCell}>
-                  <TouchableOpacity onPress={() => openEditModal(item.id)}>
-                    <Text style={{ color: '#185f33', fontWeight: 'bold' }}>Edit</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={() => deleteTrip(item.id)}>
-                    <Text style={{ color: '#d32f2f', fontWeight: 'bold' }}>Delete</Text>
-                  </TouchableOpacity>
+                <View style={[styles.cell, { flex: 2 }]}>
+                    <Text style={{ fontWeight: 'bold' }}>{item.routeName}</Text>
+                    <Text style={{ color: '#555', fontSize: 11 }}>{item.description}</Text>
                 </View>
-              </View>
+                <Text style={styles.cell}>{item.difficulty}</Text>
+                <Text style={styles.cell}>{item.distance}km</Text>
+                <View style={styles.actionCell}>
+                    <TouchableOpacity onPress={() => openEditModal(item.id)}>
+                        <Text style={{ color: '#185f33', fontWeight: 'bold' }}>Edit</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => deleteTrip(item.id)}>
+                        <Text style={{ color: '#d32f2f', fontWeight: 'bold' }}>Delete</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
             )}
           />
 
