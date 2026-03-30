@@ -19,6 +19,7 @@ export default function App() {
     const [difficulty, setDifficulty] = useState('');
     const [distance, setDistance] = useState('');
     const [description, setDescription] = useState('');
+
     const [modalVisible, setModalVisible] = useState(false);
     const [editingId, setEditingId] = useState(null);
 
@@ -64,6 +65,29 @@ export default function App() {
         await fetch(`${apiURL}/${id}`, { method: 'DELETE' });
         fetchTrips();
     };
+
+    const clearForm = () => {
+      setRouteName('');
+      setDifficulty('');
+      setDistance('');
+      setDescription('');
+      setEditingId(null);
+    };
+
+    const openAddModal = () => {
+      clearForm();
+      setModalVisible(true);
+    };
+
+    const openEditModal = () => {
+      const trip = await fetch(`${apiURL}/${id}`).then(r => r.json());
+      setRouteName(trip.routeName);
+      setDifficulty(String(trip.difficulty));
+      setDistance(String(trip.distance));
+      setDescription(trip.description);
+      setEditingId(id);
+      setModalVisible(true);
+    }
 
 
     return (
