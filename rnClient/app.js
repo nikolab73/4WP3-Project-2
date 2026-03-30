@@ -6,6 +6,7 @@ import {
     TouchableOpacity,
     FlatList,
     StyleSheet,
+    Modal,
     Alert
 } from 'react-native';
 
@@ -18,6 +19,8 @@ export default function App() {
     const [difficulty, setDifficulty] = useState('');
     const [distance, setDistance] = useState('');
     const [description, setDescription] = useState('');
+    const [modalVisible, setModalVisible] = useState(false);
+    const [editingId, setEditingId] = useState(null);
 
     useEffect(() => {
         fetchTrips();
