@@ -5,7 +5,7 @@ let db;
 
 async function initializeDatabase() {
   db.run(`CREATE TABLE IF NOT EXISTS trips (
-    rowid INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     routeName TEXT NOT NULL,
     difficulty TEXT NOT NULL,
     distance REAL NOT NULL,

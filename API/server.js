@@ -47,3 +47,4 @@ async function start() {
         req.json({status : 'Deleted item with ID=${req.params.id}'});
     });
 }
+start();
