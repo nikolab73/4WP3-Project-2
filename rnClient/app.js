@@ -124,13 +124,15 @@ export default function App() {
             )}
           />
 
-          <View>
-            // bottom buttons
+          <View style={styles.bottomButtons}>
+            <TouchableOpacity style={styles.addButton} onPress={openAddModal}>
+                <Text style={styles.buttonText}>Add Trip</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.addButton, {backgroundColor: '#c0392b'}]} onPress={deleteTrips}>
+                <Text style={styles.buttonText}>Clear All</Text>
+            </TouchableOpacity>
           </View>
-
-          <Modal>
-            // edit and add popups
-          </Modal>
+// modals
         </View>
       );
 }
@@ -188,7 +190,19 @@ const styles = StyleSheet.create({
   bottomButtons: {
     flexDirection: 'row',
     marginTop: 16,
-    gap: 8
+    gap: 8,
+  },
+  addButton: {
+    flex: 1,
+    backgroundColor: '#185f33',
+    padding: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 14
   },
   inputs: {
     borderWidth: 1,
@@ -211,5 +225,4 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     width: '85%'
   }
-
 });
